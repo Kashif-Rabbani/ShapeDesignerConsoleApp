@@ -1,0 +1,40 @@
+.postfix {
+	-fx-fill: purple;
+	-fx-font-weight: bold;
+}
+
+.pattern {
+	-fx-fill: purple;
+	-fx-font-weight: bold;
+	-fx-font-style: italic;
+}
+
+.keyword {
+	-fx-fill: mediumvioletred;
+	-fx-font-weight: bold;
+}
+
+.symbol {
+	-fx-fill: black;
+	-fx-font-weight: bold;
+}
+
+.url {
+	-fx-fill: #141414;
+	-fx-font-style: italic;
+}
+
+.prefix {
+	-fx-fill: black;
+	-fx-font-weight: bold;
+}
+
+.variable {
+	-fx-fill: #a96e5b;
+	-fx-font-weight: bold;
+}
+
+.comment {
+	-fx-fill: blue;
+	-fx-font-style: italic;
+}

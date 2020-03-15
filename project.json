@@ -1,0 +1,64 @@
+{
+  "patterns" : [ {
+    "name" : "list of rdf:type values, all properties",
+    "description" : "{a [__] ; ~ __}"
+  }, {
+    "name" : "list of rdf:type values",
+    "description" : "{a [__] }"
+  }, {
+    "name" : "list of rdf:type values, list of values for all properties",
+    "description" : "{a [__]; ~ [__] }"
+  } ],
+  "queries" : [ {
+    "name" : "Select all <http://dbtune.org/classical/resource/type/Pianist>",
+    "variable" : "x",
+    "description" : "SELECT ?x WHERE {?x a <http://dbtune.org/classical/resource/type/Pianist>. }"
+  }, {
+    "name" : "Select all <http://dbtune.org/classical/resource/type/Conductor>",
+    "variable" : "x",
+    "description" : "SELECT ?x WHERE {?x a <http://dbtune.org/classical/resource/type/Conductor>. }"
+  }, {
+    "name" : "Select all <http://purl.org/ontology/similarity/Similarity>",
+    "variable" : "x",
+    "description" : "SELECT ?x WHERE {?x a <http://purl.org/ontology/similarity/Similarity>. }"
+  }, {
+    "name" : "Select all <http://purl.org/ontology/classicalmusicnav#StylePeriod>",
+    "variable" : "x",
+    "description" : "SELECT ?x WHERE {?x a <http://purl.org/ontology/classicalmusicnav#StylePeriod>. }"
+  }, {
+    "name" : "Select all <http://dbtune.org/classical/resource/type/Composer>",
+    "variable" : "x",
+    "description" : "SELECT ?x WHERE {?x a <http://dbtune.org/classical/resource/type/Composer>. }"
+  }, {
+    "name" : "Select all <http://purl.org/ontology/mo/Composition>",
+    "variable" : "x",
+    "description" : "SELECT ?x WHERE {?x a <http://purl.org/ontology/mo/Composition>. }"
+  }, {
+    "name" : "Select all <http://xmlns.com/foaf/0.1/Document>",
+    "variable" : "x",
+    "description" : "SELECT ?x WHERE {?x a <http://xmlns.com/foaf/0.1/Document>. }"
+  }, {
+    "name" : "Select all <http://purl.org/vocab/bio/0.1/Death>",
+    "variable" : "x",
+    "description" : "SELECT ?x WHERE {?x a <http://purl.org/vocab/bio/0.1/Death>. }"
+  }, {
+    "name" : "Select all <http://www.w3.org/2002/07/owl#ObjectProperty>",
+    "variable" : "x",
+    "description" : "SELECT ?x WHERE {?x a <http://www.w3.org/2002/07/owl#ObjectProperty>. }"
+  }, {
+    "name" : "Select all <http://www.w3.org/2002/07/owl#Class>",
+    "variable" : "x",
+    "description" : "SELECT ?x WHERE {?x a <http://www.w3.org/2002/07/owl#Class>. }"
+  }, {
+    "name" : "Select all <http://purl.org/ontology/mo/MusicalWork>",
+    "variable" : "x",
+    "description" : "SELECT ?x WHERE {?x a <http://purl.org/ontology/mo/MusicalWork>. }"
+  }, {
+    "name" : "Select all <http://purl.org/vocab/bio/0.1/Birth>",
+    "variable" : "x",
+    "description" : "SELECT ?x WHERE {?x a <http://purl.org/vocab/bio/0.1/Birth>. }"
+  } ],
+  "schema" : "PREFIX sh: <http://www.w3.org/ns/shacl#>\nPREFIX sim-methods: <http://dbtune.org/sim-methods/resource/>\nPREFIX dbpedia: <http://dbpedia.org/resource/>\nPREFIX mbz: <http://dbtune.org/musicbrainz/resource/vocab/>\nPREFIX event: <http://dbtune.org/classical/resource/event/>\nPREFIX property: <http://dbtune.org/classical/resource/vocab/>\nPREFIX cmno: <http://purl.org/ontology/classicalmusicnav#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX composer: <http://dbtune.org/classical/resource/composer/>\nPREFIX style: <http://dbtune.org/classical/resource/style/>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX sim: <http://purl.org/ontology/similarity/>\nPREFIX cmn: <http://dbtune.org/cmn/resource/>\nPREFIX geo: <http://sws.geonames.org/>\nPREFIX mo: <http://purl.org/ontology/mo/>\nPREFIX dc: <http://purl.org/dc/elements/1.1/>\nPREFIX type: <http://dbtune.org/classical/resource/type/>\nPREFIX bio: <http://purl.org/vocab/bio/0.1/>\nPREFIX wikipedia: <http://en.wikipedia.org/wiki/>\nPREFIX foaf: <http://xmlns.com/foaf/0.1/>\nPREFIX dct: <http://purl.org/dc/terms/>\nPREFIX ontolex: <http://www.w3.org/ns/lemon/ontolex#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX schema: <http://schema.org/>\nPREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n",
+  "shacl" : "",
+  "RDFType" : "/Users/kashifrabbani/Documents/Aalborg_RA/GeneWiki/DBTunes/classicaldb-20091211-d.ttl"
+}

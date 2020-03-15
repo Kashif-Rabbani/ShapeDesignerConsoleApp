@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane fx:id="basePane" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.inria.shapedesigner.view.main.ValidationSHACLTabController">
+   <children>
+      <TableView fx:id="resultSHACL" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="shapeSHACLColumn" prefWidth="75.0" text="Shape" />
+            <TableColumn fx:id="constraintComponentSHACLColumn" prefWidth="75.0" text="Constraint component" />
+            <TableColumn fx:id="constraintValueColumn" prefWidth="75.0" text="Constraint value" />
+          <TableColumn fx:id="nodeSHACLColumn" prefWidth="75.0" text="Node" />
+            <TableColumn fx:id="pathSHACLColumn" prefWidth="75.0" text="Path" />
+            <TableColumn fx:id="neighborhoodSHACLColumn" prefWidth="75.0" text="Neighborhood" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </children>
+</AnchorPane>

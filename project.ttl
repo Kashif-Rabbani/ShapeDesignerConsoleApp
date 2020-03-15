@@ -1,0 +1,351 @@
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX sim-methods: <http://dbtune.org/sim-methods/resource/>
+PREFIX dbpedia: <http://dbpedia.org/resource/>
+PREFIX mbz: <http://dbtune.org/musicbrainz/resource/vocab/>
+PREFIX event: <http://dbtune.org/classical/resource/event/>
+PREFIX property: <http://dbtune.org/classical/resource/vocab/>
+PREFIX cmno: <http://purl.org/ontology/classicalmusicnav#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX composer: <http://dbtune.org/classical/resource/composer/>
+PREFIX style: <http://dbtune.org/classical/resource/style/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sim: <http://purl.org/ontology/similarity/>
+PREFIX cmn: <http://dbtune.org/cmn/resource/>
+PREFIX geo: <http://sws.geonames.org/>
+PREFIX mo: <http://purl.org/ontology/mo/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX type: <http://dbtune.org/classical/resource/type/>
+PREFIX bio: <http://purl.org/vocab/bio/0.1/>
+PREFIX wikipedia: <http://en.wikipedia.org/wiki/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX ontolex: <http://www.w3.org/ns/lemon/ontolex#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <http://schema.org/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+# Result for pattern {a [__] ; ~ __} and query SELECT ?x WHERE {?x a <http://dbtune.org/classical/resource/type/Pianist>. }
+PREFIX shgen: <http://generated-shacl.io/> 
+
+shgen:PianistShape a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#property> shgen:namePianistShapeProperty;
+  <http://www.w3.org/ns/shacl#targetClass> <http://dbtune.org/classical/resource/type/Pianist> .
+
+shgen:namePianistShapeProperty <http://www.w3.org/ns/shacl#datatype> <http://www.w3.org/2001/XMLSchema#string>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 1;
+  <http://www.w3.org/ns/shacl#path> <http://xmlns.com/foaf/0.1/name> .
+
+
+# Result for pattern {a [__] ; ~ __} and query SELECT ?x WHERE {?x a <http://dbtune.org/classical/resource/type/Conductor>. }
+PREFIX shgen: <http://generated-shacl.io/> 
+
+shgen:ConductorShape a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#property> shgen:nameConductorShapeProperty, shgen:sameAsConductorShapeProperty;
+  <http://www.w3.org/ns/shacl#targetClass> <http://dbtune.org/classical/resource/type/Conductor> .
+
+shgen:nameConductorShapeProperty <http://www.w3.org/ns/shacl#datatype> <http://www.w3.org/2001/XMLSchema#string>;
+  <http://www.w3.org/ns/shacl#minCount> 1;
+  <http://www.w3.org/ns/shacl#path> <http://xmlns.com/foaf/0.1/name> .
+
+shgen:sameAsConductorShapeProperty <http://www.w3.org/ns/shacl#NodeKind> <http://www.w3.org/ns/shacl#IRI>;
+  <http://www.w3.org/ns/shacl#minCount> 1;
+  <http://www.w3.org/ns/shacl#path> <http://www.w3.org/2002/07/owl#sameAs> .
+
+
+# Result for pattern {a [__] ; ~ __} and query SELECT ?x WHERE {?x a <http://purl.org/ontology/similarity/Similarity>. }
+PREFIX shgen: <http://generated-shacl.io/> 
+
+shgen:SimilarityShape a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#property> shgen:methodSimilarityShapeProperty, shgen:objectSimilarityShapeProperty,
+    shgen:subjectSimilarityShapeProperty;
+  <http://www.w3.org/ns/shacl#targetClass> <http://purl.org/ontology/similarity/Similarity> .
+
+shgen:methodSimilarityShapeProperty <http://www.w3.org/ns/shacl#NodeKind> <http://www.w3.org/ns/shacl#IRI>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 1;
+  <http://www.w3.org/ns/shacl#path> <http://purl.org/ontology/similarity/method> .
+
+shgen:objectSimilarityShapeProperty <http://www.w3.org/ns/shacl#NodeKind> <http://www.w3.org/ns/shacl#IRI>;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://purl.org/ontology/similarity/object> .
+
+shgen:subjectSimilarityShapeProperty <http://www.w3.org/ns/shacl#NodeKind> <http://www.w3.org/ns/shacl#IRI>;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://purl.org/ontology/similarity/subject> .
+
+
+# Result for pattern {a [__] ; ~ __} and query SELECT ?x WHERE {?x a <http://purl.org/ontology/classicalmusicnav#StylePeriod>. }
+PREFIX shgen: <http://generated-shacl.io/> 
+
+shgen:StylePeriodShape a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#property> shgen:titleStylePeriodShapeProperty;
+  <http://www.w3.org/ns/shacl#targetClass> <http://purl.org/ontology/classicalmusicnav#StylePeriod> .
+
+shgen:titleStylePeriodShapeProperty <http://www.w3.org/ns/shacl#datatype> <http://www.w3.org/2001/XMLSchema#string>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 1;
+  <http://www.w3.org/ns/shacl#path> <http://purl.org/dc/elements/1.1/title> .
+
+
+# Result for pattern {a [__] ; ~ __} and query SELECT ?x WHERE {?x a <http://dbtune.org/classical/resource/type/Composer>. }
+PREFIX shgen: <http://generated-shacl.io/> 
+
+shgen:ComposerShape a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#property> shgen:aliasComposerShapeProperty, shgen:based_nearComposerShapeProperty,
+    shgen:birthComposerShapeProperty, shgen:deathComposerShapeProperty, shgen:from_style_periodComposerShapeProperty,
+    shgen:genderComposerShapeProperty, shgen:hasInfluencedComposerShapeProperty, shgen:influencedByComposerShapeProperty,
+    shgen:nameComposerShapeProperty, shgen:nationalityComposerShapeProperty, shgen:pageComposerShapeProperty,
+    shgen:periodComposerShapeProperty, shgen:remarksComposerShapeProperty, shgen:sameAsComposerShapeProperty,
+    shgen:wikipediaComposerShapeProperty;
+  <http://www.w3.org/ns/shacl#targetClass> <http://dbtune.org/classical/resource/type/Composer> .
+
+shgen:aliasComposerShapeProperty <http://www.w3.org/ns/shacl#datatype> <http://www.w3.org/2001/XMLSchema#string>;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://dbtune.org/musicbrainz/resource/vocab/alias> .
+
+shgen:based_nearComposerShapeProperty <http://www.w3.org/ns/shacl#NodeKind> <http://www.w3.org/ns/shacl#IRI>;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://xmlns.com/foaf/0.1/based_near> .
+
+shgen:birthComposerShapeProperty <http://www.w3.org/ns/shacl#NodeKind> <http://www.w3.org/ns/shacl#IRI>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://dbtune.org/classical/resource/vocab/birth> .
+
+shgen:deathComposerShapeProperty <http://www.w3.org/ns/shacl#NodeKind> <http://www.w3.org/ns/shacl#IRI>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://dbtune.org/classical/resource/vocab/death> .
+
+shgen:from_style_periodComposerShapeProperty <http://www.w3.org/ns/shacl#NodeKind>
+    <http://www.w3.org/ns/shacl#IRI>;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://purl.org/ontology/classicalmusicnav#from_style_period> .
+
+shgen:genderComposerShapeProperty <http://www.w3.org/ns/shacl#datatype> <http://www.w3.org/2001/XMLSchema#string>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://dbtune.org/classical/resource/vocab/gender> .
+
+shgen:hasInfluencedComposerShapeProperty <http://www.w3.org/ns/shacl#NodeKind> <http://www.w3.org/ns/shacl#IRI>;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://purl.org/ontology/classicalmusicnav#hasInfluenced> .
+
+shgen:influencedByComposerShapeProperty <http://www.w3.org/ns/shacl#NodeKind> <http://www.w3.org/ns/shacl#IRI>;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://purl.org/ontology/classicalmusicnav#influencedBy> .
+
+shgen:nameComposerShapeProperty <http://www.w3.org/ns/shacl#datatype> <http://www.w3.org/2001/XMLSchema#string>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://xmlns.com/foaf/0.1/name> .
+
+shgen:nationalityComposerShapeProperty <http://www.w3.org/ns/shacl#datatype> <http://www.w3.org/2001/XMLSchema#string>;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://dbtune.org/classical/resource/vocab/nationality> .
+
+shgen:pageComposerShapeProperty <http://www.w3.org/ns/shacl#NodeKind> <http://www.w3.org/ns/shacl#IRI>;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://xmlns.com/foaf/0.1/page> .
+
+shgen:periodComposerShapeProperty <http://www.w3.org/ns/shacl#datatype> <http://www.w3.org/2001/XMLSchema#string>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://dbtune.org/classical/resource/vocab/period> .
+
+shgen:remarksComposerShapeProperty <http://www.w3.org/ns/shacl#datatype> <http://www.w3.org/2001/XMLSchema#string>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://dbtune.org/classical/resource/vocab/remarks> .
+
+shgen:sameAsComposerShapeProperty <http://www.w3.org/ns/shacl#NodeKind> <http://www.w3.org/ns/shacl#IRI>;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://www.w3.org/2002/07/owl#sameAs> .
+
+shgen:wikipediaComposerShapeProperty <http://www.w3.org/ns/shacl#NodeKind> <http://www.w3.org/ns/shacl#IRI>;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://purl.org/ontology/mo/wikipedia> .
+
+
+# Result for pattern {a [__] ; ~ __} and query SELECT ?x WHERE {?x a <http://purl.org/ontology/mo/Composition>. }
+PREFIX shgen: <http://generated-shacl.io/> 
+
+shgen:CompositionShape a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#property> shgen:composerCompositionShapeProperty, shgen:dateCompositionShapeProperty,
+    shgen:placeCompositionShapeProperty, shgen:produced_workCompositionShapeProperty;
+  <http://www.w3.org/ns/shacl#targetClass> <http://purl.org/ontology/mo/Composition> .
+
+shgen:composerCompositionShapeProperty <http://www.w3.org/ns/shacl#NodeKind> <http://www.w3.org/ns/shacl#IRI>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 1;
+  <http://www.w3.org/ns/shacl#path> <http://purl.org/ontology/mo/composer> .
+
+shgen:dateCompositionShapeProperty <http://www.w3.org/ns/shacl#datatype> <http://www.w3.org/2001/XMLSchema#integer>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://purl.org/vocab/bio/0.1/date> .
+
+shgen:placeCompositionShapeProperty <http://www.w3.org/ns/shacl#datatype> <http://www.w3.org/2001/XMLSchema#string>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://purl.org/vocab/bio/0.1/place> .
+
+shgen:produced_workCompositionShapeProperty <http://www.w3.org/ns/shacl#NodeKind>
+    <http://www.w3.org/ns/shacl#IRI>;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://purl.org/ontology/mo/produced_work> .
+
+
+# Result for pattern {a [__] ; ~ __} and query SELECT ?x WHERE {?x a <http://xmlns.com/foaf/0.1/Document>. }
+PREFIX shgen: <http://generated-shacl.io/> 
+
+shgen:DocumentShape a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#property> shgen:primaryTopicDocumentShapeProperty, shgen:siteNameDocumentShapeProperty;
+  <http://www.w3.org/ns/shacl#targetClass> <http://xmlns.com/foaf/0.1/Document> .
+
+shgen:primaryTopicDocumentShapeProperty <http://www.w3.org/ns/shacl#NodeKind> <http://www.w3.org/ns/shacl#IRI>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 1;
+  <http://www.w3.org/ns/shacl#path> <http://xmlns.com/foaf/0.1/primaryTopic> .
+
+shgen:siteNameDocumentShapeProperty <http://www.w3.org/ns/shacl#datatype> <http://www.w3.org/2001/XMLSchema#string>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 1;
+  <http://www.w3.org/ns/shacl#path> <http://dbtune.org/classical/resource/vocab/siteName> .
+
+
+# Result for pattern {a [__] ; ~ __} and query SELECT ?x WHERE {?x a <http://purl.org/vocab/bio/0.1/Death>. }
+PREFIX shgen: <http://generated-shacl.io/> 
+
+shgen:DeathShape a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#property> shgen:approximateDeathShapeProperty, shgen:dateDeathShapeProperty;
+  <http://www.w3.org/ns/shacl#targetClass> <http://purl.org/vocab/bio/0.1/Death> .
+
+shgen:approximateDeathShapeProperty <http://www.w3.org/ns/shacl#datatype> <http://www.w3.org/2001/XMLSchema#boolean>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://dbtune.org/classical/resource/vocab/approximate> .
+
+shgen:dateDeathShapeProperty <http://www.w3.org/ns/shacl#datatype> <http://www.w3.org/2001/XMLSchema#integer>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 1;
+  <http://www.w3.org/ns/shacl#path> <http://purl.org/vocab/bio/0.1/date> .
+
+
+# Result for pattern {a [__] ; ~ __} and query SELECT ?x WHERE {?x a <http://www.w3.org/2002/07/owl#ObjectProperty>. }
+PREFIX shgen: <http://generated-shacl.io/> 
+
+shgen:ObjectPropertyShape a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#property> shgen:subPropertyOfObjectPropertyShapeProperty;
+  <http://www.w3.org/ns/shacl#targetClass> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+
+shgen:subPropertyOfObjectPropertyShapeProperty <http://www.w3.org/ns/shacl#NodeKind>
+    <http://www.w3.org/ns/shacl#IRI>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 1;
+  <http://www.w3.org/ns/shacl#path> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> .
+
+
+# Result for pattern {a [__] ; ~ __} and query SELECT ?x WHERE {?x a <http://www.w3.org/2002/07/owl#Class>. }
+PREFIX shgen: <http://generated-shacl.io/> 
+
+shgen:ClassShape a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#property> shgen:subClassOfClassShapeProperty;
+  <http://www.w3.org/ns/shacl#targetClass> <http://www.w3.org/2002/07/owl#Class> .
+
+shgen:subClassOfClassShapeProperty <http://www.w3.org/ns/shacl#NodeKind> <http://www.w3.org/ns/shacl#IRI>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 1;
+  <http://www.w3.org/ns/shacl#path> <http://www.w3.org/2000/01/rdf-schema#subClassOf> .
+
+
+# Result for pattern {a [__] ; ~ __} and query SELECT ?x WHERE {?x a <http://purl.org/ontology/mo/MusicalWork>. }
+PREFIX shgen: <http://generated-shacl.io/> 
+
+shgen:MusicalWorkShape a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#property> shgen:aliasMusicalWorkShapeProperty, shgen:catalogueMusicalWorkShapeProperty,
+    shgen:composed_inMusicalWorkShapeProperty, shgen:formMusicalWorkShapeProperty, shgen:hasPartMusicalWorkShapeProperty,
+    shgen:isPartOfMusicalWorkShapeProperty, shgen:keyMusicalWorkShapeProperty, shgen:numberMusicalWorkShapeProperty,
+    shgen:opusMusicalWorkShapeProperty, shgen:pageMusicalWorkShapeProperty, shgen:remarksMusicalWorkShapeProperty,
+    shgen:titleMusicalWorkShapeProperty;
+  <http://www.w3.org/ns/shacl#targetClass> <http://purl.org/ontology/mo/MusicalWork> .
+
+shgen:aliasMusicalWorkShapeProperty <http://www.w3.org/ns/shacl#datatype> <http://www.w3.org/2001/XMLSchema#string>;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://dbtune.org/musicbrainz/resource/vocab/alias> .
+
+shgen:catalogueMusicalWorkShapeProperty <http://www.w3.org/ns/shacl#datatype> <http://www.w3.org/2001/XMLSchema#string>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://purl.org/ontology/mo/catalogue> .
+
+shgen:composed_inMusicalWorkShapeProperty <http://www.w3.org/ns/shacl#NodeKind> <http://www.w3.org/ns/shacl#IRI>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 1;
+  <http://www.w3.org/ns/shacl#path> <http://purl.org/ontology/mo/composed_in> .
+
+shgen:formMusicalWorkShapeProperty <http://www.w3.org/ns/shacl#NodeKind> <http://www.w3.org/ns/shacl#IRI>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://dbtune.org/classical/resource/vocab/form> .
+
+shgen:hasPartMusicalWorkShapeProperty <http://www.w3.org/ns/shacl#NodeKind> <http://www.w3.org/ns/shacl#IRI>;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://purl.org/dc/elements/1.1/hasPart> .
+
+shgen:isPartOfMusicalWorkShapeProperty <http://www.w3.org/ns/shacl#NodeKind> <http://www.w3.org/ns/shacl#IRI>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://purl.org/dc/elements/1.1/isPartOf> .
+
+shgen:keyMusicalWorkShapeProperty <http://www.w3.org/ns/shacl#datatype> <http://www.w3.org/2001/XMLSchema#string>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://purl.org/ontology/mo/key> .
+
+shgen:numberMusicalWorkShapeProperty <http://www.w3.org/ns/shacl#datatype> <http://www.w3.org/2001/XMLSchema#string>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://purl.org/ontology/mo/number> .
+
+shgen:opusMusicalWorkShapeProperty <http://www.w3.org/ns/shacl#datatype> <http://www.w3.org/2001/XMLSchema#string>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://purl.org/ontology/mo/opus> .
+
+shgen:pageMusicalWorkShapeProperty <http://www.w3.org/ns/shacl#NodeKind> <http://www.w3.org/ns/shacl#IRI>;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://xmlns.com/foaf/0.1/page> .
+
+shgen:remarksMusicalWorkShapeProperty <http://www.w3.org/ns/shacl#datatype> <http://www.w3.org/2001/XMLSchema#string>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://dbtune.org/classical/resource/vocab/remarks> .
+
+shgen:titleMusicalWorkShapeProperty <http://www.w3.org/ns/shacl#datatype> <http://www.w3.org/2001/XMLSchema#string>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://purl.org/dc/elements/1.1/title> .
+
+
+# Result for pattern {a [__] ; ~ __} and query SELECT ?x WHERE {?x a <http://purl.org/vocab/bio/0.1/Birth>. }
+PREFIX shgen: <http://generated-shacl.io/> 
+
+shgen:BirthShape a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#property> shgen:approximateBirthShapeProperty, shgen:dateBirthShapeProperty;
+  <http://www.w3.org/ns/shacl#targetClass> <http://purl.org/vocab/bio/0.1/Birth> .
+
+shgen:approximateBirthShapeProperty <http://www.w3.org/ns/shacl#datatype> <http://www.w3.org/2001/XMLSchema#boolean>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 0;
+  <http://www.w3.org/ns/shacl#path> <http://dbtune.org/classical/resource/vocab/approximate> .
+
+shgen:dateBirthShapeProperty <http://www.w3.org/ns/shacl#datatype> <http://www.w3.org/2001/XMLSchema#integer>;
+  <http://www.w3.org/ns/shacl#maxCount> 1;
+  <http://www.w3.org/ns/shacl#minCount> 1;
+  <http://www.w3.org/ns/shacl#path> <http://purl.org/vocab/bio/0.1/date> .
+
+

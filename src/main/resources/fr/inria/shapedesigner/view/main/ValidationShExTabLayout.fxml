@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+
+<SplitPane fx:id="basePane" dividerPositions="0.3144758735440932, 0.6173044925124792" orientation="VERTICAL" prefHeight="800.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.inria.shapedesigner.view.main.ValidationShExTabController">
+   <items>
+				<AnchorPane>
+					<children>
+						<GridPane layoutX="34.0" layoutY="14.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+							<columnConstraints>
+								<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+							</columnConstraints>
+							<rowConstraints>
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="120.0" prefHeight="120.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+							</rowConstraints>
+							<children>
+								<Label text="Validation:" />
+								<RadioButton fx:id="refine" mnemonicParsing="false" text="Refine" GridPane.rowIndex="1">
+									<toggleGroup>
+										<ToggleGroup fx:id="validationAlgorithm" />
+									</toggleGroup>
+								</RadioButton>
+								<RadioButton fx:id="recursive" mnemonicParsing="false" selected="true" text="Recursive" toggleGroup="$validationAlgorithm" GridPane.rowIndex="2" />
+                  <AnchorPane GridPane.rowIndex="3">
+                     <children>
+                        <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="130.0" prefWidth="130.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+            								<AnchorPane>
+            									<children>
+                                    <TableView fx:id="validationRequestsTable" editable="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <columns>
+                                        <TableColumn fx:id="nodeRequestColumn" prefWidth="75.0" text="Query" />
+                                        <TableColumn fx:id="shapeRequestColumn" prefWidth="75.0" text="Shape" />
+                                      </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TableView>
+            									</children>
+            								</AnchorPane>
+                              <AnchorPane GridPane.columnIndex="1">
+                                 <children>
+                                    <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <AnchorPane GridPane.rowIndex="1">
+                                             <children>
+                                                <Button mnemonicParsing="false" onAction="#addValidationRequest" text="Add request" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane>
+                                             <children>
+                                                <Button mnemonicParsing="false" onAction="#removeValidationRequest" text="Remove request" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+								<AnchorPane GridPane.rowIndex="4">
+									<children>
+                        <GridPane layoutX="399.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+      										<Button fx:id="validationButton" minWidth="100.0" mnemonicParsing="false" onAction="#performValidation" prefHeight="30.0" prefWidth="130.0" text="Vallidate" GridPane.columnIndex="1" />
+                              <Button fx:id="stopButton" minWidth="130.0" mnemonicParsing="false" onAction="#stopValidation" text="Stop" />
+                           </children>
+                        </GridPane>
+									</children>
+								</AnchorPane>
+							</children>
+						</GridPane>
+					</children>
+				</AnchorPane>
+				<AnchorPane fx:id="resultPane" prefHeight="200.0" prefWidth="200.0">
+					<children>
+            <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="28.0" minHeight="28.0" prefHeight="28.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="218.0" minHeight="10.0" prefHeight="206.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <AnchorPane GridPane.rowIndex="1">
+                     <children>
+            						<TableView fx:id="result" minHeight="100.0" prefWidth="780.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            							<columns>
+            								<TableColumn fx:id="nodeColumn" prefWidth="75.0" text="Node" />
+            								<TableColumn fx:id="shapeColumn" prefWidth="75.0" text="Shape" />
+            								<TableColumn fx:id="resultColumn" maxWidth="100.0" minWidth="70.0" prefWidth="70.0" text="Result" />
+            								<TableColumn fx:id="messageColumn" prefWidth="231.0" text="Message" />
+            							</columns>
+            							<columnResizePolicy>
+            								<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+            							</columnResizePolicy>
+            						</TableView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane>
+                     <children>
+                        <GridPane layoutY="4.0" prefHeight="28.0" prefWidth="635.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="223.0" minWidth="10.0" prefWidth="197.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="273.0" minWidth="10.0" prefWidth="194.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="298.0" minWidth="10.0" prefWidth="248.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="385.0" minWidth="10.0" prefWidth="375.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                  						<CheckBox fx:id="showNegatives" mnemonicParsing="false" onAction="#updateResult" selected="true" text="Display negative results" />
+                  						<CheckBox fx:id="showPositives" mnemonicParsing="false" onAction="#updateResult" selected="true" text="Display positive results" GridPane.columnIndex="1" />
+                  						<CheckBox fx:id="generated" mnemonicParsing="false" onAction="#updateResult" prefHeight="19.0" prefWidth="255.0" selected="true" text="Only non-gerenated Shape Label" GridPane.columnIndex="2" />
+                              <Button mnemonicParsing="false" onAction="#extractConformantPart" prefHeight="26.0" prefWidth="185.0" text="Extract conformant part" GridPane.columnIndex="3" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </GridPane>
+					</children>
+				</AnchorPane>
+				<AnchorPane fx:id="matchingPane" prefHeight="200.0" prefWidth="200.0">
+					<children>
+						<TreeTableView fx:id="shapeTreeView" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+							<columns>
+								<TreeTableColumn fx:id="exprTypeColumn" minWidth="50.0" prefWidth="100.0" text="Type" />
+								<TreeTableColumn fx:id="exprDescrColumn" minWidth="50.0" prefWidth="500.0" text="Description" />
+								<TreeTableColumn fx:id="matchingTriplesColumn" text="Neighbourhood">
+									<columns>
+										<TreeTableColumn fx:id="matchingTriplesPredicateColumn" minWidth="50.0" prefWidth="300.0" text="Predicate" />
+										<TreeTableColumn fx:id="matchingTriplesObjectColumn" minWidth="50.0" prefWidth="300.0" text="Object" />
+									</columns>
+								</TreeTableColumn>
+							</columns>
+							<columnResizePolicy>
+								<TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+							</columnResizePolicy>
+						</TreeTableView>
+					</children>
+				</AnchorPane>
+   </items>
+</SplitPane>

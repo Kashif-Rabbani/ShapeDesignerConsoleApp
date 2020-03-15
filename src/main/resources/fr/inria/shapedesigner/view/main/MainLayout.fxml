@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.inria.shapedesigner.view.main.MainLayoutController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
+            <items>
+                  <Menu mnemonicParsing="false" text="New ShEx Project">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#newShExRDFProject" text="RDF" />
+                        <MenuItem mnemonicParsing="false" onAction="#newShExSparQLProject" text="SparQL endpoint" />
+                        <MenuItem mnemonicParsing="false" onAction="#newShExSailRepositoryProject" text="RDF4J SailRepository" />
+                        <MenuItem mnemonicParsing="false" onAction="#newShExWikidataProject" text="Wikidata" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="New SHACL Project">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#newSHACLRDFProject" text="RDF" />
+                        <MenuItem mnemonicParsing="false" onAction="#newSHACLSparQLProject" text="SparQL endpoint" />
+                        <MenuItem mnemonicParsing="false" onAction="#newSHACLSailRepositoryProject" text="RDF4J SailRepository" />
+                        <MenuItem mnemonicParsing="false" onAction="#newSHACLWikidataProject" text="Wikidata" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Open project">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#openProjectWikidata" text="From Wikidata" />
+                        <MenuItem mnemonicParsing="false" onAction="#openProjectFromFile" text="From file">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                    </items>
+                  </Menu>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#closeProject" text="Close project">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="W" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#saveProject" text="Save project">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#saveProjectAs" text="Save project as ..." />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem mnemonicParsing="false" onAction="#close" text="Close">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+            </items>
+          </Menu>
+            <Menu fx:id="schemaMenu" mnemonicParsing="false" text="Schema">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#loadSchema" text="Load schema" />
+                  <MenuItem mnemonicParsing="false" onAction="#saveSchema" text="Save schema" />
+              </items>
+            </Menu>
+            <Menu fx:id="graphMenu" mnemonicParsing="false" text="Graph">
+              <items>
+                  <MenuItem fx:id="reloadMenuItem" mnemonicParsing="false" onAction="#reloadData" text="Reload data" />
+                <MenuItem fx:id="loadMenuItem" mnemonicParsing="false" onAction="#loadDataFile" text="Load data from file" />
+                  <MenuItem fx:id="clearMenuItem" mnemonicParsing="false" onAction="#clear" text="Clear graph" />
+              </items>
+            </Menu>
+            <Menu fx:id="patternMenu" mnemonicParsing="false" text="Pattern">
+              <items>
+                  <MenuItem mnemonicParsing="false" onAction="#clearPatterns" text="Clear patterns" />
+                <MenuItem mnemonicParsing="false" onAction="#loadPatterns" text="Load patterns" />
+                  <MenuItem mnemonicParsing="false" onAction="#savePatterns" text="Save patterns as ..." />
+              </items>
+            </Menu>
+            <Menu fx:id="queryMenu" mnemonicParsing="false" text="Query">
+              <items>
+                <MenuItem fx:id="rdfHelpMenuItem" mnemonicParsing="false" onAction="#generateAllTypeQueries" text="Generate query for each type" />
+                  <MenuItem fx:id="wdHelpMenuItem" mnemonicParsing="false" onAction="#createQueryForWikidataWithLabel" text="Generate query from wikidata label" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#clearQueries" text="Clear queries" />
+                  <MenuItem mnemonicParsing="false" onAction="#loadQueries" text="Load queries" />
+                  <MenuItem mnemonicParsing="false" onAction="#saveQueries" text="Save queries as ..." />
+              </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <TabPane fx:id="tabs" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab fx:id="conceptionTab" text="Conception" />
+          <Tab fx:id="validationShexTab" text="ShEx Validation" />
+            <Tab fx:id="validationShaclTab" text="SHACL Validation" />
+        </tabs>
+      </TabPane>
+   </center>
+   <bottom>
+      <AnchorPane prefHeight="100.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextArea fx:id="logArea" editable="false" layoutX="122.0" layoutY="-50.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </BorderPane.margin>
+      </AnchorPane>
+   </bottom>
+</BorderPane>
