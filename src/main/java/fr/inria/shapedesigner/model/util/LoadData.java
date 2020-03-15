@@ -16,13 +16,13 @@
  ******************************************************************************/
 package fr.inria.shapedesigner.model.util;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import me.tongfei.progressbar.ProgressBar;
+import me.tongfei.progressbar.ProgressBarBuilder;
 import org.eclipse.rdf4j.model.Model;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.RDFParseException;
@@ -60,9 +60,21 @@ public class LoadData {
 //			}
 //		} 
 //		System.out.println(foundformat);
+
+
 		System.out.println("Streaming file to create a model.");
 		FileInputStream fin = new FileInputStream(path);
-		Model model = Rio.parse(fin, "", foundformat);
+
+		ProgressBarBuilder pbb = new ProgressBarBuilder()
+				.setTaskName("Reading")
+				.setUnit("MB", 1048576); // setting the progress bar to use MB as the unit
+		Model model;
+		try (Reader reader = new BufferedReader(new InputStreamReader(ProgressBar.wrap(fin, pbb)))) {
+			 model =	Rio.parse(reader,"", foundformat);
+		}
+
+
+		//Model model = Rio.parse(fin, "", foundformat);
 		return model;
 	}
 	
