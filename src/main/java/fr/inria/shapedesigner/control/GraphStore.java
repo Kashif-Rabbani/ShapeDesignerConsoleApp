@@ -27,6 +27,7 @@ import java.util.Set;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
 
+import me.tongfei.progressbar.ProgressBar;
 import org.apache.commons.rdf.api.BlankNodeOrIRI;
 import org.apache.commons.rdf.api.Graph;
 import org.apache.commons.rdf.api.IRI;
@@ -64,8 +65,6 @@ public class GraphStore implements Graph {
 	protected Repository repository;
 	
 	/** Initialize a new empty memory store
-	 * 
-	 * @param graph
 	 */
 	public GraphStore () {
 		repository = new SailRepository(new MemoryStore());
@@ -257,6 +256,7 @@ public class GraphStore implements Graph {
 	
 
 	public void loadDataFromModel(Model model) {
+
 		loadDataFromGraph(ProjectFactory.factory.asGraph(model));
 		
 		RepositoryConnection con = repository.getConnection();
@@ -277,10 +277,13 @@ public class GraphStore implements Graph {
 
 	public void loadDataFromGraph(Graph graph) {
 		RepositoryConnection con = repository.getConnection();
-		try {
+		try (ProgressBar pb = new ProgressBar("loadDataFromGraph", graph.size())){
 			con.begin();
+			long i = 0;
 			for (Triple t : graph.iterate()) {
+				i++;
 				con.add(ProjectFactory.factory.asStatement(t));
+				pb.stepBy(i);
 			}
 			con.commit();
 		} catch(Exception e) {

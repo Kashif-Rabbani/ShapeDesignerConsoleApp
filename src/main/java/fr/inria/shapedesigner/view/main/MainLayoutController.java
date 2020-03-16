@@ -579,8 +579,8 @@ public class MainLayoutController {
 					project.getListOfQuery().add(new NamedQuery("Select all "+RDFPrintingUtil.toPrettyString(type, project.parsePrefixes()), 
 							"x", "SELECT ?x WHERE {?x a "+RDFPrintingUtil.toPrettyString(type, project.parsePrefixes())+". }"));
 				}
-				System.out.println(project.getListOfQuery().size());
-				System.out.println(project.getListOfPattern().size());
+				System.out.println("Size of getListOfQuery "+project.getListOfQuery().size());
+				System.out.println("Size of getListOfPattern "+project.getListOfPattern().size());
 
 			} catch (Exception e) {	
 				MainApp.logApp("Error when when parsing the prefixes ", e.getClass()+"  "+e.getMessage());

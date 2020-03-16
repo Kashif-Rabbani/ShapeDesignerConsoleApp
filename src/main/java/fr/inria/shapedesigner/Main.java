@@ -33,9 +33,9 @@ public class Main {
             ConceptionTabController conceptionTabController = new ConceptionTabController();
             ObservableList<NamedQuery> queries = mainLayoutController.getProject().getListOfQuery();
             queries.remove(0,1);
-
+            System.out.println("Calling performAnalysis");
             mainLayoutController.getProject().performAnalysis(mainLayoutController.getProject().getListOfPattern().get(0),queries , conceptionTabController, args[1] );
-
+            System.out.println("Saving project...");
             mainLayoutController.saveProjectHere(args[2]);
 
         } catch (Exception e) {

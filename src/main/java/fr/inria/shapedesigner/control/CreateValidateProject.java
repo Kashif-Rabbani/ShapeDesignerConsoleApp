@@ -221,24 +221,23 @@ public class CreateValidateProject {
 					//System.out.println(resultText);
 					//editor.appendText(resultText);
 					String resultIs = editor.getAccessibleText() + resultText;
-					System.out.println("Schema is printing here. ");
+					System.out.println("Schema is being set now ... ");
 					//System.out.println(resultIs);
 					setSchema(resultIs);
 
-					System.out.println(getSchema());
+					//System.out.println(getSchema());
 
 
 					File dest = new File(outputFile);
-					if (dest!=null) {
-						try {
-							BufferedWriter writer = new BufferedWriter(new FileWriter(dest));
-							writer.write(getSchema());
-							writer.close();
-						} catch (IOException e) {
-							System.out.println("Error when saving Error when parsing the pattern. Message:"+ e.getMessage());
-							e.printStackTrace();
-						}
-
+					try {
+						BufferedWriter writer = new BufferedWriter(new FileWriter(dest));
+						System.out.println("Started writing schema...");
+						writer.write(getSchema());
+						writer.close();
+						System.out.println("Closing....");
+					} catch (IOException e) {
+						System.out.println("Error when saving Error when parsing the pattern. Message:"+ e.getMessage());
+						e.printStackTrace();
 					}
 
 					//conceptionTabController.analysisDone(resultText);
