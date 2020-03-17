@@ -91,7 +91,7 @@ public class CreateValidateProject {
 
 			editor.setAccessibleText("PREFIX sh: <http://www.w3.org/ns/shacl#>\n");
 
-			System.out.println(editor.getAccessibleText());
+			//System.out.println(editor.getAccessibleText());
 			//editorString += "PREFIX sh: <http://www.w3.org/ns/shacl#>\n";
 		}
 		if (type.equals(PROJECT_TYPE.SHEX))
@@ -99,7 +99,7 @@ public class CreateValidateProject {
 
 		Map<String, String> prefixes = graph.getPrefixes();
 
-		System.out.println(graph.getPrefixes().toString());
+		//System.out.println(graph.getPrefixes().toString());
 
 		for (String key:prefixes.keySet())
 			appendPrefixIfAbsent(key,prefixes.get(key));
@@ -220,10 +220,11 @@ public class CreateValidateProject {
 					}
 					//System.out.println(resultText);
 					//editor.appendText(resultText);
-					String resultIs = editor.getAccessibleText() + resultText;
+
 					System.out.println("Schema is being set now ... ");
 					//System.out.println(resultIs);
-					setSchema(resultIs);
+					setSchema(editor.getAccessibleText() + resultText);
+					System.out.println("Schema set complete.");
 
 					//System.out.println(getSchema());
 
